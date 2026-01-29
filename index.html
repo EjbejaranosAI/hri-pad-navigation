@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Perception–Awareness–Decision (PAD) · HRI 2026 LBR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perception–Awareness–Decision (PAD) · HRI 2026 LBR</title>
 
-  <!-- Clean, modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,41 +12,41 @@
   <style>
     :root{
       --bg: #0b1220;
-      --surface: rgba(255,255,255,0.06);
-      --surface-2: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --muted-2: rgba(255,255,255,0.55);
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.085);
       --border: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
       --accent: #7c5cff;
-      --accent-2: #38bdf8;
+      --accent2:#38bdf8;
       --shadow: 0 18px 60px rgba(0,0,0,0.45);
       --radius: 18px;
-      --maxw: 1040px;
+      --maxw: 1080px;
     }
 
     *{ box-sizing: border-box; }
     html, body { height: 100%; }
     body{
-      margin: 0;
+      margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(900px 600px at 20% 0%, rgba(124,92,255,0.25), transparent 60%),
-        radial-gradient(700px 500px at 90% 10%, rgba(56,189,248,0.18), transparent 55%),
-        radial-gradient(900px 700px at 50% 110%, rgba(124,92,255,0.12), transparent 55%),
+        radial-gradient(900px 600px at 20% 0%, rgba(124,92,255,0.23), transparent 60%),
+        radial-gradient(700px 500px at 90% 10%, rgba(56,189,248,0.16), transparent 55%),
+        radial-gradient(900px 700px at 50% 110%, rgba(124,92,255,0.10), transparent 55%),
         var(--bg);
       line-height: 1.6;
     }
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ opacity: 0.92; }
+    a{ color: inherit; text-decoration:none; }
+    a:hover{ opacity: .92; }
 
-    /* Top nav */
+    /* NAV */
     .nav{
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
       backdrop-filter: blur(14px);
       background: rgba(11,18,32,0.55);
       border-bottom: 1px solid var(--border);
@@ -56,48 +55,47 @@
       max-width: var(--maxw);
       margin: 0 auto;
       padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
     }
     .brand{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing: .2px;
+      white-space: nowrap;
     }
     .badge{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(124,92,255,0.16);
       border: 1px solid rgba(124,92,255,0.28);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: rgba(255,255,255,0.9);
-      white-space: nowrap;
     }
     .nav-links{
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display:flex;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      justify-content:flex-end;
+      gap:10px;
     }
     .pill{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding: 10px 12px;
       border-radius: 999px;
       background: rgba(255,255,255,0.06);
       border: 1px solid var(--border);
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       color: rgba(255,255,255,0.9);
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
@@ -107,86 +105,76 @@
       border-color: rgba(255,255,255,0.18);
     }
     .pill.primary{
-      background: linear-gradient(135deg, rgba(124,92,255,0.90), rgba(56,189,248,0.80));
-      border: 1px solid rgba(255,255,255,0.18);
+      background: linear-gradient(135deg, rgba(124,92,255,0.92), rgba(56,189,248,0.82));
       color: #081022;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .pill.disabled{
+      opacity: 0.55;
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
-    /* Hero */
+    /* HERO */
     .hero{
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 28px 18px 0;
+      padding: 26px 18px 0;
     }
     .hero-card{
       border-radius: calc(var(--radius) + 8px);
-      overflow: hidden;
+      overflow:hidden;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.04);
       box-shadow: var(--shadow);
     }
-    .hero-media{
-      position: relative;
-      min-height: 280px;
+    .hero-top{
+      padding: 22px 22px 18px;
       background:
-        linear-gradient(180deg, rgba(11,18,32,0.10), rgba(11,18,32,0.85)),
-        url("./media/Experiment_setup.png") center / cover no-repeat;
-    }
-    .hero-media::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(900px 300px at 20% 0%, rgba(124,92,255,0.35), transparent 60%),
-        radial-gradient(700px 280px at 90% 20%, rgba(56,189,248,0.25), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.55));
-      pointer-events: none;
-    }
-    .hero-content{
-      padding: 22px 22px 26px;
+        radial-gradient(900px 260px at 20% 0%, rgba(124,92,255,0.28), transparent 60%),
+        radial-gradient(700px 240px at 90% 0%, rgba(56,189,248,0.18), transparent 55%),
+        rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border);
     }
     .title{
-      margin: 0;
-      font-size: clamp(28px, 4.0vw, 44px);
-      line-height: 1.12;
+      margin:0;
+      font-size: clamp(28px, 4vw, 44px);
       letter-spacing: -0.02em;
+      line-height: 1.12;
     }
     .subtitle{
       margin: 10px 0 0;
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 15px;
     }
     .meta{
       margin-top: 14px;
-      color: var(--muted-2);
+      color: var(--muted2);
       font-size: 13px;
     }
-    .cta-row{
-      margin-top: 18px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .cta{
+      margin-top: 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    /* Main layout */
+    /* LAYOUT */
     .container{
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 20px 18px 70px;
+      padding: 18px 18px 70px;
       display: grid;
-      grid-template-columns: 1fr;
       gap: 18px;
     }
-
     .grid{
-      display: grid;
+      display:grid;
       grid-template-columns: 1fr;
       gap: 18px;
     }
-
-    @media (min-width: 960px){
-      .grid{ grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+    @media (min-width: 980px){
+      .grid{ grid-template-columns: 1.1fr 0.9fr; }
     }
 
     .card{
@@ -194,107 +182,127 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-      overflow: hidden;
+      overflow:hidden;
     }
     .card-header{
       padding: 16px 18px;
       border-bottom: 1px solid var(--border);
       background: rgba(255,255,255,0.03);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
     }
-    .card-header h3{
-      margin: 0;
+    .card-header h2{
+      margin:0;
       font-size: 14px;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.86);
     }
     .card-body{ padding: 18px; }
 
-    .kpi{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .chiprow{ display:flex; gap:10px; flex-wrap:wrap; }
     .chip{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.86);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
+      color: rgba(255,255,255,0.86);
     }
-    .chip span{
-      color: var(--muted);
-      font-weight: 600;
-    }
+    .chip span{ color: var(--muted); font-weight: 700; }
 
-    /* Video */
+    /* VIDEO */
     .video-wrap{
       border-radius: 14px;
-      overflow: hidden;
+      overflow:hidden;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(0,0,0,0.35);
     }
     video{
       width: 100%;
-      display: block;
-      background: #000;
+      display:block;
+      background:#000;
     }
+    .hint{ margin: 10px 0 0; color: var(--muted2); font-size: 13px; }
 
-    /* Figures */
+    /* FIGURES */
+    .two-col{
+      display:grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 820px){
+      .two-col{ grid-template-columns: 1fr 1fr; }
+    }
     figure{
-      margin: 0;
-      display: grid;
-      gap: 10px;
+      margin:0;
+      display:grid;
+      gap:10px;
     }
     .img{
       border-radius: 14px;
-      overflow: hidden;
+      overflow:hidden;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(0,0,0,0.28);
     }
     .img img{
-      width: 100%;
-      height: auto;
-      display: block;
+      width:100%;
+      height:auto;
+      display:block;
     }
     figcaption{
-      font-size: 13px;
       color: var(--muted);
+      font-size: 13px;
     }
 
-    .two-col{
-      display: grid;
-      gap: 14px;
-      grid-template-columns: 1fr;
+    /* TABLE */
+    table{
+      width:100%;
+      border-collapse: collapse;
+      overflow:hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
     }
-    @media (min-width: 760px){
-      .two-col{ grid-template-columns: 1fr 1fr; }
+    th, td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      text-align:left;
+      font-size: 13px;
+      color: rgba(255,255,255,0.88);
+      vertical-align: top;
     }
+    th{
+      background: rgba(255,255,255,0.05);
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+    }
+    tr:last-child td{ border-bottom: none; }
 
-    /* Footer */
+    /* FOOTER */
     footer{
       max-width: var(--maxw);
       margin: 0 auto;
       padding: 18px;
-      color: var(--muted-2);
+      text-align:center;
+      color: var(--muted2);
       font-size: 13px;
       border-top: 1px solid var(--border);
-      text-align: center;
     }
-
-    /* Small helper */
-    .muted{ color: var(--muted); }
-    .small{ font-size: 13px; color: var(--muted); }
     .sep{ color: rgba(255,255,255,0.30); margin: 0 8px; }
+
+    /* Small helpers */
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; color: var(--muted2); }
+    ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
   </style>
 </head>
 
@@ -304,17 +312,16 @@
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">
-        PAD
-        <span class="badge">HRI 2026 · LBR</span>
+        PAD <span class="badge">HRI 2026 · LBR</span>
       </div>
-
       <div class="nav-links">
         <a class="pill" href="#abstract">Abstract</a>
         <a class="pill" href="#video">Video</a>
-        <a class="pill" href="#figures">Figures</a>
+        <a class="pill" href="#framework">Framework</a>
+        <a class="pill" href="#experiment">Experiment</a>
         <a class="pill" href="#results">Results</a>
         <a class="pill" href="https://github.com/EjbejaranosAI/hri-pad-navigation" target="_blank" rel="noopener">GitHub</a>
-        <a class="pill primary" href="#" target="_blank" rel="noopener">Paper (PDF)</a>
+        <a class="pill primary disabled" href="#" aria-disabled="true" title="Coming soon">Paper (PDF)</a>
       </div>
     </div>
   </div>
@@ -322,21 +329,37 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-card">
-      <div class="hero-media"></div>
-      <div class="hero-content">
+      <div class="hero-top">
         <h1 class="title">Perception–Awareness–Decision (PAD)</h1>
         <p class="subtitle">Socially-Aware Robot Navigation and Interaction</p>
         <div class="meta">
-          Edison Jair Bejarano Sepúlveda <span class="sep">·</span> Valerio Bo <span class="sep">·</span> Alberto Sanfeliu <span class="sep">·</span> Anais Garrell
-          <br>
-          CSIC–UPC (IRI), Barcelona
+          Edison Jair Bejarano Sepulveda <span class="sep">·</span> Valerio Bo <span class="sep">·</span> Alberto Sanfeliu <span class="sep">·</span> Anaís Garrell
+          <br/>
+          Institut de Robòtica i Informàtica Industrial (IRI), CSIC–UPC · Barcelona, Spain
         </div>
 
-        <div class="cta-row">
-          <a class="pill primary" href="#" target="_blank" rel="noopener">Paper (PDF)</a>
+        <div class="cta">
+          <a class="pill disabled" href="#" aria-disabled="true" title="Coming soon">Paper (PDF) — Coming soon</a>
           <a class="pill" href="https://github.com/EjbejaranosAI/hri-pad-navigation" target="_blank" rel="noopener">Code</a>
           <a class="pill" href="https://ejbejaranosai.github.io/" target="_blank" rel="noopener">Author Page</a>
         </div>
+      </div>
+
+      <!-- BIG VIDEO (hero style) -->
+      <div class="card-body" id="video">
+        <div class="chiprow" style="margin-bottom:12px;">
+          <div class="chip"><span>Video:</span> ./media/LBR-PAD.mp4</div>
+          <div class="chip"><span>Scenario:</span> Corridor-blocking</div>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="./media/LBR-PAD.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p class="hint">
+          If the video doesn’t load, confirm the file name is exactly <b>LBR-PAD.mp4</b> and it’s committed & pushed (case-sensitive).
+        </p>
       </div>
     </div>
   </div>
@@ -345,52 +368,60 @@
   <div class="container">
 
     <div class="grid">
-      <!-- LEFT: ABSTRACT -->
+      <!-- ABSTRACT -->
       <div class="card" id="abstract">
         <div class="card-header">
-          <h3>Abstract</h3>
-          <div class="kpi">
-            <div class="chip"><span>Framework:</span> PAD</div>
-            <div class="chip"><span>Topic:</span> Social Nav + HRI</div>
+          <h2>Abstract</h2>
+          <div class="chiprow">
+            <div class="chip"><span>Pipeline:</span> SLAM + VLM + ASR + LLM</div>
+            <div class="chip"><span>Output:</span> Situational-awareness map</div>
           </div>
         </div>
         <div class="card-body">
           <p class="muted" style="margin-top:0;">
-            We present a Perception–Awareness–Decision (PAD) framework for socially-aware robot navigation in shared human
-            environments. PAD integrates geometric navigation with multimodal perception, semantic situational awareness,
-            and context-grounded dialogue, enabling robots to resolve navigation conflicts that require human cooperation.
+            Robots working in spaces shared by people need more than geometric mapping: they must recognize people, understand
+            social context, and decide whether to proceed or negotiate passage. We introduce a Perception–Awareness–Decision (PAD)
+            framework that combines SLAM with Vision–Language Models (VLMs), speech recognition, and Large Language Models (LLMs)
+            through an explicit situational-awareness representation. In a corridor-blocking task, PAD improves task success, increases safety
+            margins, and produces behavior participants judged as more socially appropriate than a geometric baseline.
           </p>
           <p class="small" style="margin-bottom:0;">
-            Tip: when you have the final PDF link (ACM DOI / preprint / arXiv), replace the <code>#</code> in “Paper (PDF)”.
+            (Text adapted from the paper abstract.) When you can publish the PDF (DOI/arXiv/preprint), I’ll wire the “Paper (PDF)” button.
           </p>
         </div>
       </div>
 
-      <!-- RIGHT: VIDEO -->
-      <div class="card" id="video">
+      <!-- CONTRIBUTIONS / TL;DR -->
+      <div class="card">
         <div class="card-header">
-          <h3>Video</h3>
-          <div class="chip"><span>File:</span> media/LBR-PAD.mp4</div>
+          <h2>At a glance</h2>
+          <div class="chiprow">
+            <div class="chip"><span>Conditions:</span> P0 / P1 / P2</div>
+            <div class="chip"><span>Participants:</span> 8</div>
+          </div>
         </div>
         <div class="card-body">
-          <div class="video-wrap">
-            <video controls preload="metadata" playsinline>
-              <source src="./media/LBR-PAD.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <p class="small" style="margin-bottom:0;">
-            If it still appears black, verify that the file is pushed to GitHub and that GitHub Pages is enabled for this repo.
+          <p class="muted" style="margin-top:0;">
+            PAD separates (1) multimodal perception, (2) situation awareness, and (3) decision-making, enabling a robot to switch
+            between safe replanning and context-grounded dialogue when navigation depends on human cooperation.
           </p>
+          <ul>
+            <li><b>P0:</b> SLAM-only baseline (no semantics, no dialogue)</li>
+            <li><b>P1:</b> Context-aware conservative interaction</li>
+            <li><b>P2:</b> Context-aware assertive interaction</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- FIGURES -->
-    <div class="card" id="figures">
+    <!-- FRAMEWORK -->
+    <div class="card" id="framework">
       <div class="card-header">
-        <h3>Figures</h3>
-        <div class="chip"><span>Folder:</span> /media</div>
+        <h2>Framework</h2>
+        <div class="chiprow">
+          <div class="chip"><span>Figure:</span> PAD overview</div>
+          <div class="chip"><span>Key idea:</span> explicit awareness layer</div>
+        </div>
       </div>
       <div class="card-body">
         <div class="two-col">
@@ -398,80 +429,196 @@
             <div class="img">
               <img src="./media/PAD_FW.png" alt="PAD framework overview">
             </div>
-            <figcaption>System overview: PAD architecture integrating perception, situational awareness, and decision-making.</figcaption>
+            <figcaption>
+              <b>PAD architecture.</b> Perception fuses LiDAR/SLAM with VLM & language inputs; the situation-awareness layer
+              builds a semantic contextual map; a meta-controller selects between navigation/control and an LLM-driven dialogue module.
+            </figcaption>
           </figure>
 
           <figure>
             <div class="img">
               <img src="./media/Experiment_setup.png" alt="Experimental setup">
             </div>
-            <figcaption>Experimental corridor-blocking setup used for evaluation.</figcaption>
+            <figcaption>
+              <b>Experimental setup.</b> Corridor-blocking scenario with TIAGo++ (IVO) in an indoor environment, used to test
+              whether the robot can resolve a navigation conflict requiring human cooperation.
+            </figcaption>
           </figure>
         </div>
+      </div>
+    </div>
 
-        <div style="height:14px;"></div>
+    <!-- EXPERIMENT -->
+    <div class="card" id="experiment">
+      <div class="card-header">
+        <h2>Experiment</h2>
+        <div class="chiprow">
+          <div class="chip"><span>Task:</span> corridor blocked by participant</div>
+          <div class="chip"><span>Outcome:</span> proceed vs negotiate</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="muted" style="margin-top:0;">
+          Each trial starts with the robot navigating toward a fixed goal. When the participant blocks the corridor,
+          the robot either repeatedly replans (<b>P0</b>) or uses PAD to initiate context-grounded dialogue and then continues navigation (<b>P1/P2</b>).
+        </p>
 
         <figure>
           <div class="img">
-            <img src="./media/seq_tpa.png" alt="Example trial sequence">
+            <img src="./media/seq_tpa.png" alt="Example trial sequence (TPA)">
           </div>
-          <figcaption>Example sequence (TPA) in the corridor-blocking scenario.</figcaption>
+          <figcaption>
+            <b>Example trial sequence (TPA).</b> The robot detects blockage, initiates dialogue, verifies clearance, and resumes navigation.
+            (This sequence corresponds to the paper’s illustrated experimental trial.)
+          </figcaption>
         </figure>
+
+        <div class="two-col" style="margin-top:14px;">
+          <figure>
+            <div class="img">
+              <img src="./media/seq_eda.png" alt="Example sequence EDA">
+            </div>
+            <figcaption><b>EDA sequence.</b> Additional example of interaction/navigation flow under PAD.</figcaption>
+          </figure>
+          <figure>
+            <div class="img">
+              <img src="./media/seq_nda.png" alt="Example sequence NDA">
+            </div>
+            <figcaption><b>NDA sequence.</b> Additional example illustrating resolution and continuation to goal.</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
 
     <!-- RESULTS -->
     <div class="card" id="results">
       <div class="card-header">
-        <h3>User Study Results</h3>
-        <div class="kpi">
-          <div class="chip"><span>Plots:</span> PNG</div>
-          <div class="chip"><span>Readable:</span> Yes</div>
+        <h2>Results</h2>
+        <div class="chiprow">
+          <div class="chip"><span>Success:</span> P1/P2 = 8/8</div>
+          <div class="chip"><span>Baseline:</span> P0 = 2/8</div>
         </div>
       </div>
       <div class="card-body">
-        <div class="two-col">
+        <p class="muted" style="margin-top:0;">
+          PAD-enabled behaviors achieved perfect success and improved safety margins compared to the SLAM-only baseline.
+          P1 tended to finish faster with fewer turns (but longer utterances), while P2 used more turns with shorter messages.
+        </p>
+
+        <div style="overflow:auto; border-radius:14px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>P0 (SLAM-only)</th>
+                <th>P1 (Conservative)</th>
+                <th>P2 (Assertive)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Success rate</td>
+                <td>2/8</td>
+                <td>8/8</td>
+                <td>8/8</td>
+              </tr>
+              <tr>
+                <td>Re-planning attempts (avg.)</td>
+                <td>7.25</td>
+                <td>4.71</td>
+                <td>4.29</td>
+              </tr>
+              <tr>
+                <td>Stopping distance (m, avg.)</td>
+                <td>0.70</td>
+                <td>0.83</td>
+                <td>0.79</td>
+              </tr>
+              <tr>
+                <td>Trial duration (s, avg.)</td>
+                <td>105.94</td>
+                <td>99.95</td>
+                <td>162.21</td>
+              </tr>
+              <tr>
+                <td>Dialogue turns (avg.)</td>
+                <td>—</td>
+                <td>3.4</td>
+                <td>6.2</td>
+              </tr>
+              <tr>
+                <td>Tokens per turn (avg.)</td>
+                <td>—</td>
+                <td>35.45</td>
+                <td>21.36</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="small" style="margin:10px 0 0;">
+          Metrics reproduced from Table 1 in the paper.
+        </p>
+
+        <div class="two-col" style="margin-top:14px;">
           <figure>
             <div class="img">
               <img src="./media/Q_2.png" alt="Clarity of explanation">
             </div>
-            <figcaption>Clarity of the robot’s explanation across conditions.</figcaption>
+            <figcaption><b>Clarity.</b> Participants rated PAD conditions higher in explanation clarity than the baseline.</figcaption>
           </figure>
 
           <figure>
             <div class="img">
               <img src="./media/pref_79.png" alt="Perceived naturalness">
             </div>
-            <figcaption>Perceived naturalness of interaction styles.</figcaption>
+            <figcaption><b>Naturalness.</b> PAD interaction styles were judged more natural than SLAM-only navigation.</figcaption>
           </figure>
         </div>
 
-        <div style="height:14px;"></div>
-
-        <div class="two-col">
+        <div class="two-col" style="margin-top:14px;">
           <figure>
             <div class="img">
-              <img src="./media/pref_81.png" alt="Preferred strategy">
+              <img src="./media/pref_80.png" alt="Comfort/safety">
             </div>
-            <figcaption>Preferred robot behavior for real-life use.</figcaption>
+            <figcaption><b>Comfort/Safety.</b> Self-reported comfort/safety trends favored PAD-enabled behaviors.</figcaption>
           </figure>
 
           <figure>
             <div class="img">
-              <img src="./media/pref_80.png" alt="Comfort and safety">
+              <img src="./media/pref_81.png" alt="Preference for real-life use">
             </div>
-            <figcaption>Self-reported comfort/safety during interaction across conditions.</figcaption>
+            <figcaption><b>Preference.</b> If choosing a real-life strategy, participants tended to prefer PAD behaviors over baseline.</figcaption>
           </figure>
         </div>
+      </div>
+    </div>
+
+    <!-- CITATION / LINKS -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Citation & links</h2>
+        <div class="chiprow">
+          <div class="chip"><span>DOI:</span> 10.1145/3776734.3794394</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="muted" style="margin-top:0;">
+          DOI (will activate after publication): <span class="muted">10.1145/3776734.3794394</span>
+        </p>
+        <p class="small" style="margin:0;">
+          When you’re ready, I can add:
+          (1) the final PDF link, (2) a BibTeX block, and (3) a “Contact” section (email button + links).
+        </p>
       </div>
     </div>
 
   </div>
 
   <footer>
-    © 2026 · Edison Jair Bejarano Sepúlveda · CSIC–UPC (IRI) · Barcelona
+    © 2026 · Edison Jair Bejarano Sepulveda · CSIC–UPC (IRI) · Barcelona
     <span class="sep">·</span>
-    Accompanying page for the HRI 2026 Late Breaking Report.
+    Companion page for the HRI 2026 Late Breaking Report.
   </footer>
 
 </body>
